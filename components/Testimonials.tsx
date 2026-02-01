@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Star } from 'lucide-react';
 import type { Testimonial } from '../types';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const testimonials: Testimonial[] = [
   {
@@ -27,12 +31,45 @@ const testimonials: Testimonial[] = [
 ];
 
 export const Testimonials: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(headerRef.current, {
+        opacity: 0,
+        x: -50,
+        duration: 1,
+        scrollTrigger: {
+          trigger: headerRef.current,
+          start: 'top 80%',
+        },
+      });
+
+      gsap.from(cardsRef.current?.children || [], {
+        opacity: 0,
+        y: 50,
+        rotation: -5,
+        stagger: 0.2,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: cardsRef.current,
+          start: 'top 80%',
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="testimonios" className="py-16 sm:py-20 md:py-24 bg-brand-900">
+    <section ref={sectionRef} id="testimonios" className="py-16 sm:py-20 md:py-24 bg-brand-900">
       <div className="container mx-auto px-4 sm:px-6">
         
         {/* Header - Mobile-first layout */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 gap-6">
+        <div ref={headerRef} className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 gap-6">
           <div className="max-w-xl">
             <h2 className="text-3xl xs:text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
               Socios, no solo clientes.
@@ -63,7 +100,7 @@ export const Testimonials: React.FC = () => {
         </div>
 
         {/* Testimonials Grid - Mobile-first: 1 column → 3 columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-6 md:gap-8">
+        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-6 md:gap-8">
           {testimonials.map((t) => (
             <article 
               key={t.id} 

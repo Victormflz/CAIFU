@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import type { Product } from '../types';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const products: Product[] = [
   {
@@ -54,12 +58,45 @@ const products: Product[] = [
 ];
 
 export const Products: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(headerRef.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        scrollTrigger: {
+          trigger: headerRef.current,
+          start: 'top 80%',
+        },
+      });
+
+      gsap.from(gridRef.current?.children || [], {
+        opacity: 0,
+        y: 60,
+        scale: 0.9,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: 'back.out(1.2)',
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: 'top 80%',
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="catalogo" className="py-16 sm:py-20 md:py-24 bg-white">
+    <section ref={sectionRef} id="catalogo" className="py-16 sm:py-20 md:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="mb-10 sm:mb-12">
+        <div ref={headerRef} className="mb-10 sm:mb-12">
           <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-900 mb-2 leading-tight">
             Productos más Vendidos
           </h2>
@@ -69,7 +106,7 @@ export const Products: React.FC = () => {
         </div>
 
         {/* Products Grid - Mobile-first: 1 column → 2 columns → 4 columns */}
-        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div ref={gridRef} className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {products.map((product) => (
             <article 
               key={product.id} 

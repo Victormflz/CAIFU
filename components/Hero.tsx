@@ -1,9 +1,57 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ArrowRight, ChevronDown, MessageCircle } from 'lucide-react';
+import gsap from 'gsap';
 
 export const Hero: React.FC = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const h1Ref = useRef<HTMLHeadingElement>(null);
+  const h2Ref = useRef<HTMLHeadingElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+  const trustRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      
+      tl.from(badgeRef.current, {
+        opacity: 0,
+        y: -30,
+        duration: 0.8,
+      })
+      .from(h1Ref.current, {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+      }, '-=0.4')
+      .from(h2Ref.current, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+      }, '-=0.6')
+      .from(descRef.current, {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+      }, '-=0.4')
+      .from(buttonsRef.current?.children || [], {
+        opacity: 0,
+        y: 20,
+        stagger: 0.2,
+        duration: 0.6,
+      }, '-=0.4')
+      .from(trustRef.current, {
+        opacity: 0,
+        duration: 0.6,
+      }, '-=0.2');
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <header className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <header ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -19,31 +67,31 @@ export const Hero: React.FC = () => {
       {/* Content - Mobile-first Typography */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center pt-20 pb-16">
         {/* Badge */}
-        <div className="inline-block px-4 py-2 mb-6 rounded-full border border-brand-500/30 bg-brand-500/10 backdrop-blur-sm animate-fade-in">
+        <div ref={badgeRef} className="inline-block px-4 py-2 mb-6 rounded-full border border-brand-500/30 bg-brand-500/10 backdrop-blur-sm">
           <span className="text-brand-500 text-xs sm:text-sm font-bold tracking-wider uppercase">
             Venta Mayorista Exclusiva
           </span>
         </div>
         
         {/* Main Heading - Mobile-first sizes */}
-        <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight leading-[1.1] animate-slide-up px-2">
+        <h1 ref={h1Ref} className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight leading-[1.1] px-2">
           Importadora Caifu
         </h1>
         
         {/* Subheading - Optimized for readability */}
-        <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-200 mb-6 leading-tight px-2">
+        <h2 ref={h2Ref} className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-200 mb-6 leading-tight px-2">
           Tu Socio Mayorista en Protección iPhone
         </h2>
         
         {/* Description - Mobile-optimized line length */}
-        <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-4">
+        <p ref={descRef} className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-4">
           En Importadora Caifu eliminamos intermediarios para ofrecerte productos al mejor precio. 
           Conectamos directamente con la fuente para asegurarnos de que cada inversión potencie 
           la rentabilidad de tu negocio.
         </p>
 
         {/* CTA Buttons - Large touch targets */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
+        <div ref={buttonsRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
           <button 
             type="button"
             className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-brand-900 font-bold text-base sm:text-lg rounded-full overflow-hidden shadow-2xl shadow-yellow-500/40 hover:shadow-yellow-400/70 hover:from-yellow-300 hover:to-yellow-400 active:scale-95 transition-all duration-300 min-h-touch"
@@ -67,7 +115,7 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Trust indicator - Mobile-friendly */}
-        <p className="mt-8 text-xs sm:text-sm text-gray-500 font-medium px-4">
+        <p ref={trustRef} className="mt-8 text-xs sm:text-sm text-gray-500 font-medium px-4">
           Más de 500+ comercios confían en nosotros
         </p>
       </div>
