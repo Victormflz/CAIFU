@@ -43,10 +43,10 @@ export const Hero: React.FC = () => {
         </p>
 
         {/* CTA Buttons - Large touch targets */}
-        <div className="flex flex-col items-center justify-center gap-4 w-full max-w-md mx-auto px-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
           <button 
             type="button"
-            className="btn-base bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 font-bold text-base sm:text-lg shadow-2xl shadow-yellow-500/30 w-full"
+            className="btn-base bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 font-bold text-base sm:text-lg shadow-2xl shadow-yellow-500/30"
             onClick={() => {
               window.open('https://wa.me/573147244831?text=Hola!%20Quisiera%20saber%20más%20sobre%20sus%20productos.', '_blank');
             }}
@@ -58,7 +58,7 @@ export const Hero: React.FC = () => {
           
           <a 
             href="#propuesta"
-            className="text-white font-medium hover:text-brand-500 transition-colors text-center py-2"
+            className="btn-base bg-transparent border-2 border-gray-600 text-white hover:border-white hover:bg-white/10"
           >
             Cómo funciona
           </a>
