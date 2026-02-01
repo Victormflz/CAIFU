@@ -46,16 +46,16 @@ export const Hero: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
           <button 
             type="button"
-            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-brand-900 font-bold text-base sm:text-lg rounded-full overflow-hidden shadow-2xl shadow-yellow-500/50 hover:shadow-yellow-400/80 hover:scale-[1.02] active:scale-95 transition-all duration-300 min-h-touch border-2 border-yellow-300"
+            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-brand-900 font-bold text-base sm:text-lg rounded-full overflow-hidden shadow-2xl shadow-yellow-500/50 hover:shadow-yellow-300/90 hover:scale-105 active:scale-95 transition-all duration-500 min-h-touch border-2 border-yellow-300 hover:border-yellow-200"
             onClick={() => {
               window.open('https://wa.me/573147244831?text=Hola!%20Quisiera%20saber%20más%20sobre%20sus%20productos.', '_blank');
             }}
             aria-label="Contactar por WhatsApp"
           >
-            <span className="absolute inset-0 bg-gradient-to-t from-transparent via-white/30 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            <span className="absolute inset-0 bg-white/40 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
-            <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 relative z-10 drop-shadow-sm" aria-hidden="true" />
-            <span className="relative z-10 drop-shadow-sm">Contactar por WhatsApp</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/60 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></span>
+            <span className="absolute inset-0 bg-gradient-to-br from-yellow-300/40 to-orange-400/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+            <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 relative z-10 drop-shadow-sm group-hover:rotate-12 transition-transform duration-300" aria-hidden="true" />
+            <span className="relative z-10 drop-shadow-sm group-hover:-translate-y-0.5 transition-transform duration-300">Contactar por WhatsApp</span>
           </button>
           
           <a 

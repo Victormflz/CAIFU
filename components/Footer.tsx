@@ -1,5 +1,4 @@
 import React from 'react';
-import { Instagram, Facebook, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
@@ -15,34 +14,9 @@ export const Footer: React.FC = () => {
             <div className="mb-4">
               <span className="text-xl font-black text-white">CAIFU.</span>
             </div>
-            <p className="text-gray-400 text-sm sm:text-base max-w-xs mb-6 leading-relaxed">
+            <p className="text-gray-400 text-sm sm:text-base max-w-xs leading-relaxed">
               Importadora líder en venta mayorista. Conectamos tu negocio con las mejores oportunidades del mercado asiático.
             </p>
-            
-            {/* Social Links - Touch-optimized */}
-            <div className="flex gap-4">
-              <a 
-                href="#" 
-                className="text-gray-400 hover:text-white transition-colors p-2 -ml-2 rounded-lg hover:bg-brand-800"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" aria-hidden="true" />
-              </a>
-              <a 
-                href="#" 
-                className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-brand-800"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-5 h-5" aria-hidden="true" />
-              </a>
-              <a 
-                href="#" 
-                className="text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-brand-800"
-                aria-label="Email"
-              >
-                <Mail className="w-5 h-5" aria-hidden="true" />
-              </a>
-            </div>
           </div>
           
           {/* Quick Links */}
