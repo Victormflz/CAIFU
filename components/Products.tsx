@@ -150,20 +150,20 @@ export const Products: React.FC = () => {
 
   return (
     <section ref={sectionRef} id="catalogo" className="py-16 sm:py-20 md:py-24 bg-white">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-5 sm:px-6">
         
         {/* Section Header */}
         <div ref={headerRef} className="mb-10 sm:mb-12">
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-900 mb-2 leading-tight">
+          <h2 className="text-[1.75rem] leading-tight xs:text-3xl sm:text-4xl font-bold text-gray-900 mb-2 px-2">
             Productos más Vendidos
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base">
+          <p className="text-gray-600 text-base sm:text-base px-2">
             Mostrando los {products.length} resultados
           </p>
         </div>
 
         {/* Products Grid - Mobile-first: 1 column → 2 columns → 4 columns */}
-        <div ref={gridRef} className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div ref={gridRef} className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {products.map((product) => (
             <article 
               key={product.id} 

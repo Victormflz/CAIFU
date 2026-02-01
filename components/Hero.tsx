@@ -121,7 +121,7 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <header ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <header ref={heroRef} className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div ref={bgImageRef} className="absolute inset-0 z-0 will-change-transform">
         <img 
@@ -135,31 +135,31 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Content - Mobile-first Typography */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center pt-20 pb-16">
+      <div className="relative z-10 container mx-auto px-5 sm:px-6 text-center pt-20 sm:pt-24 pb-12 sm:pb-16">
         {/* Badge */}
-        <div ref={badgeRef} className="inline-block px-4 py-2 mb-6 rounded-full border border-brand-500/30 bg-brand-500/10 backdrop-blur-sm">
-          <span className="text-brand-500 text-xs sm:text-sm font-bold tracking-wider uppercase">
+        <div ref={badgeRef} className="inline-block px-5 py-2.5 mb-6 sm:mb-8 rounded-full border border-brand-500/30 bg-brand-500/10 backdrop-blur-sm">
+          <span className="text-brand-500 text-sm font-bold tracking-wider uppercase">
             Venta Mayorista Exclusiva
           </span>
         </div>
         
         {/* Main Heading - Mobile-first sizes */}
-        <h1 ref={titleRef} className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight leading-[1.1] px-2">
+        <h1 ref={titleRef} className="text-[2.5rem] leading-[1.1] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-5 sm:mb-4 tracking-tight px-2">
           Importadora Caifu
         </h1>
         
         {/* Subheading - Optimized for readability */}
-        <h2 ref={subtitleRef} className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-200 mb-6 leading-tight px-2">
+        <h2 ref={subtitleRef} className="text-xl leading-tight xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-200 mb-5 sm:mb-6 px-2">
           Accesorios iPhone al por Mayor
         </h2>
         
         {/* Description - Mobile-optimized line length */}
-        <p ref={descriptionRef} className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-4">
+        <p ref={descriptionRef} className="text-base leading-relaxed sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-7 sm:mb-10 px-4">
           Importación directa. Precios de fábrica. Sin intermediarios.
         </p>
 
         {/* CTA Buttons - Large touch targets */}
-        <div ref={buttonsRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
+        <div ref={buttonsRef} className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 px-5 max-w-md sm:max-w-none mx-auto">
           <button 
             type="button"
             className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-brand-900 font-bold text-base sm:text-lg rounded-full overflow-hidden shadow-2xl shadow-yellow-500/50 hover:shadow-yellow-300/90 hover:scale-105 active:scale-95 transition-all duration-500 min-h-touch border-2 border-yellow-300 hover:border-yellow-200"
@@ -185,7 +185,7 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Trust indicator - Mobile-friendly */}
-        <p ref={trustRef} className="mt-8 text-xs sm:text-sm text-gray-500 font-medium px-4">
+        <p ref={trustRef} className="mt-7 sm:mt-8 text-sm sm:text-sm text-gray-400 font-medium px-4">
           Más de 500+ comercios confían en nosotros
         </p>
       </div>

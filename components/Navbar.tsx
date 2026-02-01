@@ -177,16 +177,16 @@ export const Navbar: React.FC = () => {
 
           {/* Mobile Toggle - Large touch target */}
           <button 
-            className="md:hidden text-white min-h-touch tap-spacing -mr-3 flex items-center justify-center"
+            className="md:hidden text-white w-11 h-11 flex items-center justify-center rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" aria-hidden="true" />
+              <X className="w-7 h-7" aria-hidden="true" />
             ) : (
-              <Menu className="w-6 h-6" aria-hidden="true" />
+              <Menu className="w-7 h-7" aria-hidden="true" />
             )}
           </button>
         </div>
@@ -196,27 +196,27 @@ export const Navbar: React.FC = () => {
       {isMobileMenuOpen && (
         <div 
           id="mobile-menu"
-          className="md:hidden fixed inset-0 top-[60px] bg-gray-900/95 backdrop-blur-lg z-40 animate-fade-in"
+          className="md:hidden fixed inset-0 top-[64px] bg-brand-900/98 backdrop-blur-xl z-40 animate-fade-in"
         >
-          <div className="container mx-auto px-4 py-8 flex flex-col gap-4 h-full overflow-y-auto safe-bottom">
+          <div className="container mx-auto px-5 py-6 flex flex-col gap-3 h-full overflow-y-auto safe-bottom">
             <a 
               href="#propuesta" 
               onClick={() => setIsMobileMenuOpen(false)} 
-              className="text-white text-xl font-bold py-5 px-6 rounded-xl bg-white/5 hover:bg-white/10 transition-all active:scale-95 min-h-touch text-center border border-white/10"
+              className="text-white text-lg font-bold py-4 px-6 rounded-xl bg-white/5 hover:bg-white/10 active:bg-white/15 transition-all active:scale-[0.98] min-h-[60px] flex items-center justify-center border border-white/10"
             >
               Nosotros
             </a>
             <a 
               href="#servicios" 
               onClick={() => setIsMobileMenuOpen(false)} 
-              className="text-white text-xl font-bold py-5 px-6 rounded-xl bg-white/5 hover:bg-white/10 transition-all active:scale-95 min-h-touch text-center border border-white/10"
+              className="text-white text-lg font-bold py-4 px-6 rounded-xl bg-white/5 hover:bg-white/10 active:bg-white/15 transition-all active:scale-[0.98] min-h-[60px] flex items-center justify-center border border-white/10"
             >
               Servicios
             </a>
             <a 
               href="#testimonios" 
               onClick={() => setIsMobileMenuOpen(false)} 
-              className="text-white text-xl font-bold py-5 px-6 rounded-xl bg-white/5 hover:bg-white/10 transition-all active:scale-95 min-h-touch text-center border border-white/10"
+              className="text-white text-lg font-bold py-4 px-6 rounded-xl bg-white/5 hover:bg-white/10 active:bg-white/15 transition-all active:scale-[0.98] min-h-[60px] flex items-center justify-center border border-white/10"
             >
               Testimonios
             </a>
@@ -225,7 +225,7 @@ export const Navbar: React.FC = () => {
             <a 
               href="#catalogo" 
               onClick={() => setIsMobileMenuOpen(false)} 
-              className="mt-6 inline-flex items-center justify-center gap-3 px-8 py-5 bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 font-black text-xl rounded-full shadow-2xl shadow-yellow-500/50 transition-all duration-300 min-h-touch border-2 border-yellow-300"
+              className="mt-4 inline-flex items-center justify-center gap-3 px-8 py-5 bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 font-black text-lg rounded-full shadow-2xl shadow-yellow-500/50 transition-all duration-300 min-h-[64px] border-2 border-yellow-300"
             >
               <Package className="w-6 h-6" aria-hidden="true" />
               Ver Catálogo

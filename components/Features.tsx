@@ -106,20 +106,20 @@ export const Features: React.FC = () => {
 
   return (
     <section ref={sectionRef} id="servicios" className="py-16 sm:py-20 md:py-24 bg-brand-800">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-5 sm:px-6">
         
         {/* Section Header - Mobile optimized */}
         <div ref={headerRef} className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
-          <h3 className="text-sm sm:text-base font-bold text-brand-500 uppercase tracking-wider mb-3">
+          <h3 className="text-sm sm:text-base font-bold text-brand-500 uppercase tracking-wider mb-3 sm:mb-4">
             Ventajas
           </h3>
-          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-white leading-tight px-2">
+          <h2 className="text-[1.75rem] leading-tight xs:text-3xl sm:text-4xl font-bold text-white px-2">
             Por qué comprar con nosotros
           </h2>
         </div>
 
         {/* Features Grid - Mobile-first: 1 column → 2 columns → 4 columns */}
-        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 md:gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-8">
           {features.map((feature, idx) => (
             <article 
               key={idx} 
@@ -127,7 +127,7 @@ export const Features: React.FC = () => {
             >
               {/* Icon container - Touch-friendly size */}
               <div 
-                className="icon-container w-12 h-12 sm:w-14 sm:h-14 bg-brand-800 rounded-xl flex items-center justify-center text-brand-500 mb-5 sm:mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors"
+                className="icon-container w-14 h-14 sm:w-14 sm:h-14 bg-brand-800 rounded-xl flex items-center justify-center text-brand-500 mb-5 sm:mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors"
                 aria-hidden="true"
               >
                 <div className="icon-element">

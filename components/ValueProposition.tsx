@@ -169,7 +169,7 @@ export const ValueProposition: React.FC = () => {
 
   return (
     <section ref={sectionRef} id="propuesta" className="py-16 sm:py-20 md:py-24 bg-brand-900 relative">
-      <div ref={ref} className="container mx-auto px-4 sm:px-6">
+      <div ref={ref} className="container mx-auto px-5 sm:px-6">
         {/* Mobile-first: Content first, image second */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           

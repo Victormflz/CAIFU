@@ -132,7 +132,7 @@ export const Testimonials: React.FC = () => {
 
   return (
     <section ref={sectionRef} id="testimonios" className="py-16 sm:py-20 md:py-24 bg-brand-900">
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-5 sm:px-6">
         
         {/* Header - Mobile-first layout */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 gap-6">
