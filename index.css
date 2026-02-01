@@ -24,8 +24,13 @@
     /* Better font rendering */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Prevent horizontal scroll */
-    overflow-x: hidden;
+  }
+
+  /* Fix for fixed elements causing horizontal scroll */
+  nav[role="navigation"] {
+    max-width: 100%;
+    left: 0;
+    right: 0;
   }
 
   /* Remove tap highlight on mobile */

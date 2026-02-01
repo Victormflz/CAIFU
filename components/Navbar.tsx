@@ -112,13 +112,13 @@ export const Navbar: React.FC = () => {
       role="navigation"
       aria-label="Navegación principal"
     >
-      <div className="container mx-auto px-4 sm:px-6">
+      <div className="container mx-auto px-5 sm:px-6">
         <div className="flex justify-between items-center">
           {/* Logo - Optimized for touch */}
           <a 
             ref={logoRef}
             href="#" 
-            className="flex items-center gap-2 cursor-pointer min-h-touch tap-spacing -ml-3"
+            className="flex items-center gap-2 cursor-pointer"
             aria-label="CAIFU - Ir al inicio"
           >
             <svg 
