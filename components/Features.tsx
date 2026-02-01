@@ -114,7 +114,7 @@ export const Features: React.FC = () => {
             Ventajas
           </h3>
           <h2 className="text-[1.75rem] leading-tight xs:text-3xl sm:text-4xl font-bold text-white px-2">
-            Por qué comprar con nosotros
+            ¿Por qué comprar con nosotros?
           </h2>
         </div>
 
