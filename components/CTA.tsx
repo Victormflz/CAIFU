@@ -35,7 +35,7 @@ export const CTA: React.FC = () => {
         ).join('');
 
         gsap.from(Array.from(titleRef.current.children), {
-          autoAlpha: 0,
+          opacity: 0,
           y: 50,
           rotationX: -90,
           stagger: 0.03,
@@ -43,29 +43,29 @@ export const CTA: React.FC = () => {
           ease: 'back.out(1.5)',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 70%',
-            toggleActions: 'play none none none',
+            start: 'top 85%',
+            end: 'bottom 20%',
           },
         });
       }
 
       // Subtitle animation
       gsap.from(subtitleRef.current, {
-        autoAlpha: 0,
+        opacity: 0,
         y: 30,
         duration: 0.8,
         delay: 0.5,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 70%',
-          toggleActions: 'play none none none',
+          start: 'top 85%',
+          end: 'bottom 20%',
         },
       });
 
       // Button entrance with bounce
       gsap.from(buttonRef.current, {
-        autoAlpha: 0,
+        opacity: 0,
         scale: 0,
         rotation: -15,
         duration: 1,
@@ -73,8 +73,8 @@ export const CTA: React.FC = () => {
         ease: 'elastic.out(1, 0.6)',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 70%',
-          toggleActions: 'play none none none',
+          start: 'top 85%',
+          end: 'bottom 20%',
         },
       });
 
@@ -94,15 +94,15 @@ export const CTA: React.FC = () => {
 
       // Disclaimer fade in
       gsap.from(disclaimerRef.current, {
-        autoAlpha: 0,
+        opacity: 0,
         y: 20,
         duration: 0.6,
         delay: 1.2,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 70%',
-          toggleActions: 'play none none none',
+          start: 'top 85%',
+          end: 'bottom 20%',
         },
       });
 

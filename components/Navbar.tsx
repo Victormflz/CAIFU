@@ -14,7 +14,7 @@ export const Navbar: React.FC = () => {
     const ctx = gsap.context(() => {
       gsap.from(navRef.current, {
         y: -100,
-        autoAlpha: 0,
+        opacity: 0,
         duration: 0.8,
         ease: 'power3.out',
         delay: 0.2,
@@ -32,7 +32,7 @@ export const Navbar: React.FC = () => {
       // Menu items stagger
       if (menuItemsRef.current) {
         gsap.from(Array.from(menuItemsRef.current.children), {
-          autoAlpha: 0,
+          opacity: 0,
           y: -20,
           stagger: 0.1,
           duration: 0.6,

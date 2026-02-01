@@ -25,7 +25,7 @@ export const Hero: React.FC = () => {
 
       // Badge - aparece primero
       tl.from(badgeRef.current, {
-        autoAlpha: 0,
+        opacity: 0,
         y: -30,
         scale: 0.8,
         duration: 0.6,
@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
         titleRef.current.innerHTML = titleWords.map(word => `<span class="inline-block">${word}</span>`).join(' ');
         
         tl.from(Array.from(titleRef.current.children), {
-          autoAlpha: 0,
+          opacity: 0,
           y: 60,
           rotationX: -90,
           transformOrigin: 'top center',
@@ -48,14 +48,14 @@ export const Hero: React.FC = () => {
 
       // Subtítulo
       tl.from(subtitleRef.current, {
-        autoAlpha: 0,
+        opacity: 0,
         y: 40,
         duration: 0.8,
       }, '-=0.4');
 
       // Descripción
       tl.from(descriptionRef.current, {
-        autoAlpha: 0,
+        opacity: 0,
         y: 30,
         duration: 0.7,
       }, '-=0.5');
@@ -63,7 +63,7 @@ export const Hero: React.FC = () => {
       // Botones - con bounce effect
       if (buttonsRef.current) {
         tl.from(Array.from(buttonsRef.current.children), {
-          autoAlpha: 0,
+          opacity: 0,
           scale: 0,
           y: 30,
           stagger: 0.15,
@@ -74,14 +74,14 @@ export const Hero: React.FC = () => {
 
       // Trust indicator
       tl.from(trustRef.current, {
-        autoAlpha: 0,
+        opacity: 0,
         y: 20,
         duration: 0.6,
       }, '-=0.3');
 
       // Scroll indicator - fade in loop
       tl.from(scrollIndicatorRef.current, {
-        autoAlpha: 0,
+        opacity: 0,
         duration: 0.8,
       }, '-=0.2');
 

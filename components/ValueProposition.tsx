@@ -24,14 +24,14 @@ export const ValueProposition: React.FC = () => {
         const heading = contentRef.current.querySelector('h2');
         if (heading) {
           gsap.from(heading, {
-            autoAlpha: 0,
+            opacity: 0,
             x: -60,
             duration: 1,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: contentRef.current,
-              start: 'top 80%',
-              toggleActions: 'play none none none',
+              start: 'top 85%',
+              end: 'bottom 20%',
             },
           });
         }
@@ -42,15 +42,15 @@ export const ValueProposition: React.FC = () => {
         const paragraph = contentRef.current.querySelector('p');
         if (paragraph) {
           gsap.from(paragraph, {
-            autoAlpha: 0,
+            opacity: 0,
             y: 30,
             duration: 0.8,
             delay: 0.3,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: contentRef.current,
-              start: 'top 80%',
-              toggleActions: 'play none none none',
+              start: 'top 85%',
+              end: 'bottom 20%',
             },
           });
         }
@@ -77,7 +77,7 @@ export const ValueProposition: React.FC = () => {
         const quoteText = quoteRef.current.querySelector('p');
         if (quoteText) {
           gsap.from(quoteText, {
-            autoAlpha: 0,
+            opacity: 0,
             x: 30,
             duration: 0.8,
             delay: 0.8,
@@ -85,7 +85,7 @@ export const ValueProposition: React.FC = () => {
             scrollTrigger: {
               trigger: quoteRef.current,
               start: 'top 85%',
-              toggleActions: 'play none none none',
+              end: 'bottom 20%',
             },
           });
         }
@@ -93,15 +93,15 @@ export const ValueProposition: React.FC = () => {
 
       // Image animation - slide from right with scale
       gsap.from(imageRef.current, {
-        autoAlpha: 0,
+        opacity: 0,
         x: 80,
         scale: 0.9,
         duration: 1.2,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: imageRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
+          start: 'top 85%',
+          end: 'bottom 20%',
         },
       });
 
