@@ -46,23 +46,25 @@ export const Hero: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
           <button 
             type="button"
-            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-brand-900 font-bold text-base sm:text-lg rounded-full overflow-hidden shadow-2xl shadow-yellow-500/40 hover:shadow-yellow-400/70 hover:from-yellow-300 hover:to-yellow-400 active:scale-95 transition-all duration-300 min-h-touch"
+            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-brand-900 font-bold text-base sm:text-lg rounded-full overflow-hidden shadow-2xl shadow-yellow-500/50 hover:shadow-yellow-400/80 hover:scale-[1.02] active:scale-95 transition-all duration-300 min-h-touch border-2 border-yellow-300"
             onClick={() => {
               window.open('https://wa.me/573147244831?text=Hola!%20Quisiera%20saber%20más%20sobre%20sus%20productos.', '_blank');
             }}
             aria-label="Contactar por WhatsApp"
           >
-            <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-            <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 relative z-10" aria-hidden="true" />
-            <span className="relative z-10">Contactar por WhatsApp</span>
+            <span className="absolute inset-0 bg-gradient-to-t from-transparent via-white/30 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <span className="absolute inset-0 bg-white/40 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
+            <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 relative z-10 drop-shadow-sm" aria-hidden="true" />
+            <span className="relative z-10 drop-shadow-sm">Contactar por WhatsApp</span>
           </button>
           
           <a 
             href="#propuesta"
-            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 backdrop-blur-xl border border-white/30 text-white font-semibold text-base rounded-full overflow-hidden hover:bg-white/10 hover:border-white/50 active:scale-95 transition-all duration-300 shadow-lg shadow-black/20 min-h-touch"
+            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-xl border-2 border-white/40 text-white font-bold text-base rounded-full overflow-hidden hover:bg-white/20 hover:border-white/60 hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-2xl shadow-black/30 min-h-touch"
           >
-            <span className="absolute inset-0 bg-gradient-to-r from-brand-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            <span className="relative z-10">Cómo funciona</span>
+            <span className="absolute inset-0 bg-gradient-to-r from-brand-500/30 via-brand-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <span className="absolute inset-0 rounded-full bg-gradient-to-br from-white/10 to-transparent"></span>
+            <span className="relative z-10 drop-shadow-lg">Cómo funciona</span>
           </a>
         </div>
 

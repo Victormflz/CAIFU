@@ -32,14 +32,16 @@ export const CTA: React.FC = () => {
         <div className="flex flex-col xs:flex-row items-stretch xs:items-center justify-center gap-4 sm:gap-6 px-4 sm:px-0">
           <button 
             type="button"
-            className="btn-base bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 font-bold text-base sm:text-lg shadow-2xl shadow-yellow-500/40 w-full xs:w-auto"
+            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-brand-900 font-bold text-base sm:text-lg rounded-full overflow-hidden shadow-2xl shadow-yellow-500/50 hover:shadow-yellow-400/80 hover:scale-[1.02] active:scale-95 transition-all duration-300 min-h-touch border-2 border-yellow-300 w-full xs:w-auto"
             aria-label="Contactar por WhatsApp"
             onClick={() => {
               window.open('https://wa.me/573147244831?text=Hola!%20Quisiera%20saber%20más%20sobre%20sus%20productos.', '_blank');
             }}
           >
-            <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" aria-hidden="true" />
-            <span>Contactar por WhatsApp</span>
+            <span className="absolute inset-0 bg-gradient-to-t from-transparent via-white/30 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <span className="absolute inset-0 bg-white/40 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></span>
+            <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 relative z-10 drop-shadow-sm" aria-hidden="true" />
+            <span className="relative z-10 drop-shadow-sm">Contactar por WhatsApp</span>
           </button>
         </div>
         

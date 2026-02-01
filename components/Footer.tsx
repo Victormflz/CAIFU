@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShoppingBag, Instagram, Facebook, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   return (
@@ -77,19 +78,19 @@ export const Footer: React.FC = () => {
             <h4 className="text-white font-bold mb-4 text-base sm:text-lg">Legales</h4>
             <ul className="space-y-3 text-sm sm:text-base">
               <li>
-                <a href="#" className="text-gray-400 hover:text-brand-500 transition-colors inline-block py-1">
+                <Link to="/terminos-de-uso" className="text-gray-400 hover:text-brand-500 transition-colors inline-block py-1">
                   Términos y Condiciones
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-brand-500 transition-colors inline-block py-1">
-                  Política de Devolución
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-brand-500 transition-colors inline-block py-1">
+                <Link to="/politica-de-privacidad" className="text-gray-400 hover:text-brand-500 transition-colors inline-block py-1">
                   Política de Privacidad
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link to="/politica-de-cookies" className="text-gray-400 hover:text-brand-500 transition-colors inline-block py-1">
+                  Política de Cookies
+                </Link>
               </li>
             </ul>
           </div>

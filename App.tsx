@@ -9,6 +9,9 @@ import { Products } from './components/Products';
 import { ProductDetail } from './components/ProductDetail';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
+import { TermsOfUse } from './components/TermsOfUse';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { CookiePolicy } from './components/CookiePolicy';
 
 function MainLayout() {
   return (
@@ -31,6 +34,9 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/terminos-de-uso" element={<TermsOfUse />} />
+        <Route path="/politica-de-privacidad" element={<PrivacyPolicy />} />
+        <Route path="/politica-de-cookies" element={<CookiePolicy />} />
       </Routes>
     </Router>
   );
