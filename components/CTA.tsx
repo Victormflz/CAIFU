@@ -5,7 +5,7 @@ export const CTA: React.FC = () => {
   return (
     <section id="contacto" className="py-16 sm:py-20 md:py-24 relative overflow-hidden">
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-500 to-blue-600" aria-hidden="true"></div>
+      <div className="absolute inset-0 bg-[#4A90E2]" aria-hidden="true"></div>
       
       {/* Decorative patterns */}
       <div 
