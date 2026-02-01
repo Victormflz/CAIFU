@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X, ShoppingBag, Package } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -99,8 +99,9 @@ export const Navbar: React.FC = () => {
             </a>
             <a 
               href="#catalogo" 
-              className="btn-base bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 shadow-lg shadow-yellow-500/20"
+              className="btn-base bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 shadow-lg shadow-yellow-500/20 inline-flex items-center gap-2"
             >
+              <Package className="w-4 h-4" aria-hidden="true" />
               Ver Catálogo
             </a>
           </div>
@@ -155,8 +156,9 @@ export const Navbar: React.FC = () => {
             <a 
               href="#catalogo" 
               onClick={() => setIsMobileMenuOpen(false)} 
-              className="mt-4 btn-base bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 font-bold text-lg shadow-lg shadow-yellow-500/30"
+              className="mt-4 btn-base bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 font-bold text-lg shadow-lg shadow-yellow-500/30 inline-flex items-center gap-2"
             >
+              <Package className="w-5 h-5" aria-hidden="true" />
               Ver Catálogo
             </a>
           </div>

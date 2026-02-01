@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingBag, Instagram, Facebook, Mail } from 'lucide-react';
+import { Instagram, Facebook, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
@@ -12,8 +12,7 @@ export const Footer: React.FC = () => {
           
           {/* Brand Column - Full width on mobile */}
           <div className="sm:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <ShoppingBag className="w-6 h-6 text-brand-500" aria-hidden="true" />
+            <div className="mb-4">
               <span className="text-xl font-black text-white">CAIFU.</span>
             </div>
             <p className="text-gray-400 text-sm sm:text-base max-w-xs mb-6 leading-relaxed">
