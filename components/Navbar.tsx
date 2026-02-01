@@ -18,6 +18,7 @@ export const Navbar: React.FC = () => {
         duration: 0.8,
         ease: 'power3.out',
         delay: 0.2,
+        clearProps: 'transform,opacity'
       });
 
       // Logo animation
@@ -38,6 +39,7 @@ export const Navbar: React.FC = () => {
           duration: 0.6,
           ease: 'power2.out',
           delay: 0.8,
+          clearProps: 'transform,opacity'
         });
       }
     }, navRef);

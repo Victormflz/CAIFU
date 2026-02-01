@@ -72,6 +72,7 @@ export const Products: React.FC = () => {
           stagger: 0.15,
           duration: 0.7,
           ease: 'power3.out',
+          clearProps: 'transform,opacity',
           scrollTrigger: {
             trigger: headerRef.current,
             start: 'top 85%',
@@ -90,6 +91,7 @@ export const Products: React.FC = () => {
           stagger: 0.1,
           duration: 0.7,
           ease: 'power2.out',
+          clearProps: 'transform,opacity',
           scrollTrigger: {
             trigger: gridRef.current,
             start: 'top 85%',

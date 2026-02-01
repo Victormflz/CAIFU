@@ -46,6 +46,7 @@ export const Testimonials: React.FC = () => {
           stagger: 0.15,
           duration: 0.7,
           ease: 'power2.out',
+          clearProps: 'transform,opacity',
           scrollTrigger: {
             trigger: headerRef.current,
             start: 'top 85%',
@@ -61,6 +62,7 @@ export const Testimonials: React.FC = () => {
         x: 30,
         duration: 0.7,
         ease: 'power2.out',
+        clearProps: 'transform,opacity',
         scrollTrigger: {
           trigger: badgeRef.current,
           start: 'top 85%',
@@ -73,11 +75,13 @@ export const Testimonials: React.FC = () => {
         const avatars = badgeRef.current.querySelectorAll('img');
         if (avatars.length > 0) {
           gsap.from(Array.from(avatars), {
-            scale: 0,
+            scale: 0.3,
+            opacity: 0,
             stagger: 0.1,
             duration: 0.5,
             delay: 0.3,
             ease: 'back.out(1.7)',
+            clearProps: 'transform,opacity',
             scrollTrigger: {
               trigger: badgeRef.current,
               start: 'top 85%',
@@ -96,6 +100,7 @@ export const Testimonials: React.FC = () => {
           stagger: 0.15,
           duration: 0.7,
           ease: 'power2.out',
+          clearProps: 'transform,opacity',
           scrollTrigger: {
             trigger: gridRef.current,
             start: 'top 85%',
@@ -103,16 +108,18 @@ export const Testimonials: React.FC = () => {
           },
         });
 
-        // Stars animation per card - simplified
+        // Stars animation per card - protegido contra ocultamiento
         cards.forEach((card) => {
           const stars = card.querySelectorAll('[data-star]');
           if (stars.length > 0) {
             gsap.from(Array.from(stars), {
-              scale: 0,
+              scale: 0.3,
+              opacity: 0,
               stagger: 0.05,
               duration: 0.3,
               delay: 0.4,
               ease: 'back.out(1.5)',
+              clearProps: 'transform,opacity'
             });
           }
         });

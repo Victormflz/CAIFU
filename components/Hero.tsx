@@ -23,12 +23,13 @@ export const Hero: React.FC = () => {
         defaults: { ease: 'power3.out' }
       });
 
-      // Badge - aparece primero
+      // Badge - aparece primero (scale conservador para mantener visibilidad)
       tl.from(badgeRef.current, {
         opacity: 0,
         y: -30,
-        scale: 0.8,
+        scale: 0.9,
         duration: 0.6,
+        clearProps: 'transform,opacity'
       });
 
       // Título - split words con stagger
@@ -43,6 +44,7 @@ export const Hero: React.FC = () => {
           transformOrigin: 'top center',
           stagger: 0.1,
           duration: 0.8,
+          clearProps: 'transform,opacity'
         }, '-=0.3');
       }
 
@@ -51,6 +53,7 @@ export const Hero: React.FC = () => {
         opacity: 0,
         y: 40,
         duration: 0.8,
+        clearProps: 'transform,opacity'
       }, '-=0.4');
 
       // Descripción
@@ -58,17 +61,19 @@ export const Hero: React.FC = () => {
         opacity: 0,
         y: 30,
         duration: 0.7,
+        clearProps: 'transform,opacity'
       }, '-=0.5');
 
-      // Botones - con bounce effect
+      // Botones - con bounce effect (sin scale:0 para mantener iconos visibles)
       if (buttonsRef.current) {
         tl.from(Array.from(buttonsRef.current.children), {
           opacity: 0,
-          scale: 0,
+          scale: 0.85,
           y: 30,
           stagger: 0.15,
           duration: 0.8,
           ease: 'back.out(1.7)',
+          clearProps: 'transform,opacity'
         }, '-=0.4');
       }
 
@@ -77,12 +82,14 @@ export const Hero: React.FC = () => {
         opacity: 0,
         y: 20,
         duration: 0.6,
+        clearProps: 'transform,opacity'
       }, '-=0.3');
 
       // Scroll indicator - fade in loop
       tl.from(scrollIndicatorRef.current, {
         opacity: 0,
         duration: 0.8,
+        clearProps: 'opacity'
       }, '-=0.2');
 
       // Parallax en background image

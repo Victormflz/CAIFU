@@ -41,6 +41,7 @@ export const CTA: React.FC = () => {
           stagger: 0.03,
           duration: 0.8,
           ease: 'back.out(1.5)',
+          clearProps: 'transform,opacity',
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top 85%',
@@ -56,6 +57,7 @@ export const CTA: React.FC = () => {
         duration: 0.8,
         delay: 0.5,
         ease: 'power3.out',
+        clearProps: 'transform,opacity',
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 85%',
@@ -63,14 +65,15 @@ export const CTA: React.FC = () => {
         },
       });
 
-      // Button entrance with bounce
+      // Button entrance with bounce (sin scale:0 para mantener icono visible)
       gsap.from(buttonRef.current, {
         opacity: 0,
-        scale: 0,
-        rotation: -15,
-        duration: 1,
+        scale: 0.85,
+        rotation: -10,
+        duration: 0.9,
         delay: 0.8,
-        ease: 'elastic.out(1, 0.6)',
+        ease: 'back.out(1.5)',
+        clearProps: 'transform,opacity',
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 85%',
@@ -99,6 +102,7 @@ export const CTA: React.FC = () => {
         duration: 0.6,
         delay: 1.2,
         ease: 'power2.out',
+        clearProps: 'transform,opacity',
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top 85%',

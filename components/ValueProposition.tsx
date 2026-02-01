@@ -28,6 +28,7 @@ export const ValueProposition: React.FC = () => {
             x: -60,
             duration: 1,
             ease: 'power3.out',
+            clearProps: 'transform,opacity',
             scrollTrigger: {
               trigger: contentRef.current,
               start: 'top 85%',
@@ -47,6 +48,7 @@ export const ValueProposition: React.FC = () => {
             duration: 0.8,
             delay: 0.3,
             ease: 'power3.out',
+            clearProps: 'transform,opacity',
             scrollTrigger: {
               trigger: contentRef.current,
               start: 'top 85%',
@@ -82,6 +84,7 @@ export const ValueProposition: React.FC = () => {
             duration: 0.8,
             delay: 0.8,
             ease: 'power3.out',
+            clearProps: 'transform,opacity',
             scrollTrigger: {
               trigger: quoteRef.current,
               start: 'top 85%',
@@ -98,6 +101,7 @@ export const ValueProposition: React.FC = () => {
         scale: 0.9,
         duration: 1.2,
         ease: 'power3.out',
+        clearProps: 'transform,opacity',
         scrollTrigger: {
           trigger: imageRef.current,
           start: 'top 85%',

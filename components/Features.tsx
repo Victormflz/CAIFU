@@ -20,6 +20,7 @@ export const Features: React.FC = () => {
           stagger: 0.2,
           duration: 0.8,
           ease: 'power3.out',
+          clearProps: 'transform,opacity',
           scrollTrigger: {
             trigger: headerRef.current,
             start: 'top 85%',
@@ -38,6 +39,7 @@ export const Features: React.FC = () => {
           stagger: 0.12,
           duration: 0.7,
           ease: 'power2.out',
+          clearProps: 'transform,opacity',
           scrollTrigger: {
             trigger: gridRef.current,
             start: 'top 85%',
@@ -45,9 +47,8 @@ export const Features: React.FC = () => {
           },
         });
 
-        // Icon animations on card hover - individual setup
+        // Icon animations on card hover - protegido y optimizado
         cards.forEach((card) => {
-          const icon = card.querySelector('.icon-container');
           const iconElement = card.querySelector('.icon-element');
           
           if (iconElement) {
@@ -57,6 +58,7 @@ export const Features: React.FC = () => {
                 scale: 1.1,
                 duration: 0.6,
                 ease: 'back.out(1.7)',
+                clearProps: 'rotation'
               });
             });
 
