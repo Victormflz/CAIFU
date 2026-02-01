@@ -13,59 +13,65 @@ export const Features: React.FC = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Header animation
-      gsap.from(headerRef.current?.children || [], {
-        autoAlpha: 0,
-        y: 40,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      });
+      if (headerRef.current) {
+        gsap.from(Array.from(headerRef.current.children), {
+          autoAlpha: 0,
+          y: 40,
+          stagger: 0.2,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        });
+      }
 
       // Feature cards - stagger grid with rotate effect
-      const cards = gridRef.current?.children || [];
-      gsap.from(cards, {
-        autoAlpha: 0,
-        y: 60,
-        scale: 0.9,
-        rotationY: -15,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: 'back.out(1.2)',
-        scrollTrigger: {
-          trigger: gridRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none none',
-        },
-      });
-
-      // Icon animations on card hover - individual setup
-      cards.forEach((card) => {
-        const icon = card.querySelector('.icon-container');
-        const iconElement = card.querySelector('.icon-element');
-        
-        card.addEventListener('mouseenter', () => {
-          gsap.to(iconElement, {
-            rotation: 360,
-            scale: 1.1,
-            duration: 0.6,
-            ease: 'back.out(1.7)',
-          });
+      if (gridRef.current) {
+        const cards = Array.from(gridRef.current.children);
+        gsap.from(cards, {
+          autoAlpha: 0,
+          y: 60,
+          scale: 0.9,
+          rotationY: -15,
+          stagger: 0.15,
+          duration: 0.8,
+          ease: 'back.out(1.2)',
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: 'top 75%',
+            toggleActions: 'play none none none',
+          },
         });
 
-        card.addEventListener('mouseleave', () => {
-          gsap.to(iconElement, {
-            rotation: 0,
-            scale: 1,
-            duration: 0.4,
-            ease: 'power2.out',
-          });
+        // Icon animations on card hover - individual setup
+        cards.forEach((card) => {
+          const icon = card.querySelector('.icon-container');
+          const iconElement = card.querySelector('.icon-element');
+          
+          if (iconElement) {
+            card.addEventListener('mouseenter', () => {
+              gsap.to(iconElement, {
+                rotation: 360,
+                scale: 1.1,
+                duration: 0.6,
+                ease: 'back.out(1.7)',
+              });
+            });
+
+            card.addEventListener('mouseleave', () => {
+              gsap.to(iconElement, {
+                rotation: 0,
+                scale: 1,
+                duration: 0.4,
+                ease: 'power2.out',
+              });
+            });
+          }
         });
-      });
+      }
 
     }, sectionRef);
 

@@ -65,75 +65,83 @@ export const Products: React.FC = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Header animation
-      gsap.from(headerRef.current?.children || [], {
-        autoAlpha: 0,
-        y: 30,
-        stagger: 0.15,
-        duration: 0.7,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      });
+      if (headerRef.current) {
+        gsap.from(Array.from(headerRef.current.children), {
+          autoAlpha: 0,
+          y: 30,
+          stagger: 0.15,
+          duration: 0.7,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        });
+      }
 
       // Product cards - flip and fade stagger
-      const cards = gridRef.current?.children || [];
-      gsap.from(cards, {
-        autoAlpha: 0,
-        rotationY: -90,
-        y: 50,
-        scale: 0.8,
-        stagger: {
-          amount: 0.8,
-          from: 'start',
-          grid: 'auto',
-        },
-        duration: 0.8,
-        ease: 'back.out(1.3)',
-        scrollTrigger: {
-          trigger: gridRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none none',
-        },
-      });
+      if (gridRef.current) {
+        const cards = Array.from(gridRef.current.children);
+        gsap.from(cards, {
+          autoAlpha: 0,
+          rotationY: -90,
+          y: 50,
+          scale: 0.8,
+          stagger: {
+            amount: 0.8,
+            from: 'start',
+            grid: 'auto',
+          },
+          duration: 0.8,
+          ease: 'back.out(1.3)',
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: 'top 75%',
+            toggleActions: 'play none none none',
+          },
+        });
 
-      // Image hover effect setup
-      cards.forEach((card) => {
-        const img = card.querySelector('img');
-        const button = card.querySelector('button');
-        
-        if (img) {
-          card.addEventListener('mouseenter', () => {
-            gsap.to(img, {
-              scale: 1.15,
-              rotation: 3,
-              duration: 0.4,
-              ease: 'power2.out',
+        // Image hover effect setup
+        cards.forEach((card) => {
+          const img = card.querySelector('img');
+          const button = card.querySelector('button');
+          
+          if (img) {
+            card.addEventListener('mouseenter', () => {
+              gsap.to(img, {
+                scale: 1.15,
+                rotation: 3,
+                duration: 0.4,
+                ease: 'power2.out',
+              });
+              if (button) {
+                gsap.to(button, {
+                  y: -2,
+                  duration: 0.3,
+                  ease: 'power2.out',
+                });
+              }
             });
-            gsap.to(button, {
-              y: -2,
-              duration: 0.3,
-              ease: 'power2.out',
-            });
-          });
 
-          card.addEventListener('mouseleave', () => {
-            gsap.to(img, {
-              scale: 1,
-              rotation: 0,
-              duration: 0.3,
-              ease: 'power2.out',
+            card.addEventListener('mouseleave', () => {
+              gsap.to(img, {
+                scale: 1,
+                rotation: 0,
+                duration: 0.3,
+                ease: 'power2.out',
+              });
+              if (button) {
+                gsap.to(button, {
+                  y: 0,
+                  duration: 0.3,
+                  ease: 'power2.out',
+                });
+              }
             });
-            gsap.to(button, {
-              y: 0,
-              duration: 0.3,
-              ease: 'power2.out',
-            });
-          });
-        }
-      });
+          }
+        });
+      }
 
     }, sectionRef);
 

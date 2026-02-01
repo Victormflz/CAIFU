@@ -34,7 +34,7 @@ export const CTA: React.FC = () => {
           char === ' ' ? ' ' : `<span class="inline-block">${char}</span>`
         ).join('');
 
-        gsap.from(titleRef.current.children, {
+        gsap.from(Array.from(titleRef.current.children), {
           autoAlpha: 0,
           y: 50,
           rotationX: -90,
@@ -79,13 +79,18 @@ export const CTA: React.FC = () => {
       });
 
       // Button continuous pulse
-      gsap.to(buttonRef.current?.querySelector('button'), {
-        boxShadow: '0 0 40px rgba(234, 179, 8, 0.8), 0 0 80px rgba(234, 179, 8, 0.4)',
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-      });
+      if (buttonRef.current) {
+        const button = buttonRef.current.querySelector('button');
+        if (button) {
+          gsap.to(button, {
+            boxShadow: '0 0 40px rgba(234, 179, 8, 0.8), 0 0 80px rgba(234, 179, 8, 0.4)',
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+          });
+        }
+      }
 
       // Disclaimer fade in
       gsap.from(disclaimerRef.current, {

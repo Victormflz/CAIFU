@@ -20,31 +20,41 @@ export const ValueProposition: React.FC = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Heading animation
-      gsap.from(contentRef.current?.querySelector('h2'), {
-        autoAlpha: 0,
-        x: -60,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      });
+      if (contentRef.current) {
+        const heading = contentRef.current.querySelector('h2');
+        if (heading) {
+          gsap.from(heading, {
+            autoAlpha: 0,
+            x: -60,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: contentRef.current,
+              start: 'top 80%',
+              toggleActions: 'play none none none',
+            },
+          });
+        }
+      }
 
       // Paragraph animation
-      gsap.from(contentRef.current?.querySelector('p'), {
-        autoAlpha: 0,
-        y: 30,
-        duration: 0.8,
-        delay: 0.3,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      });
+      if (contentRef.current) {
+        const paragraph = contentRef.current.querySelector('p');
+        if (paragraph) {
+          gsap.from(paragraph, {
+            autoAlpha: 0,
+            y: 30,
+            duration: 0.8,
+            delay: 0.3,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: contentRef.current,
+              start: 'top 80%',
+              toggleActions: 'play none none none',
+            },
+          });
+        }
+      }
 
       // Quote line draw animation
       if (lineRef.current) {
@@ -63,18 +73,23 @@ export const ValueProposition: React.FC = () => {
       }
 
       // Quote content reveal
-      gsap.from(quoteRef.current?.querySelector('p'), {
-        autoAlpha: 0,
-        x: 30,
-        duration: 0.8,
-        delay: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: quoteRef.current,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-      });
+      if (quoteRef.current) {
+        const quoteText = quoteRef.current.querySelector('p');
+        if (quoteText) {
+          gsap.from(quoteText, {
+            autoAlpha: 0,
+            x: 30,
+            duration: 0.8,
+            delay: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: quoteRef.current,
+              start: 'top 85%',
+              toggleActions: 'play none none none',
+            },
+          });
+        }
+      }
 
       // Image animation - slide from right with scale
       gsap.from(imageRef.current, {
@@ -91,14 +106,19 @@ export const ValueProposition: React.FC = () => {
       });
 
       // Glow effect pulsing
-      gsap.to(imageRef.current?.querySelector('.absolute'), {
-        scale: 1.1,
-        opacity: 0.15,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-      });
+      if (imageRef.current) {
+        const glowElement = imageRef.current.querySelector('.absolute');
+        if (glowElement) {
+          gsap.to(glowElement, {
+            scale: 1.1,
+            opacity: 0.15,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut',
+          });
+        }
+      }
 
     }, sectionRef);
 

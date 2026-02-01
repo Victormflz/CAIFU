@@ -39,18 +39,20 @@ export const Testimonials: React.FC = () => {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Header content animation
-      gsap.from(headerRef.current?.children || [], {
-        autoAlpha: 0,
-        x: -50,
-        stagger: 0.2,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: headerRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      });
+      if (headerRef.current) {
+        gsap.from(Array.from(headerRef.current.children), {
+          autoAlpha: 0,
+          x: -50,
+          stagger: 0.2,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        });
+      }
 
       // Badge animation with avatars
       gsap.from(badgeRef.current, {
@@ -67,54 +69,62 @@ export const Testimonials: React.FC = () => {
       });
 
       // Avatar stagger
-      const avatars = badgeRef.current?.querySelectorAll('img') || [];
-      gsap.from(avatars, {
-        scale: 0,
-        rotation: 180,
-        stagger: 0.1,
-        duration: 0.5,
-        delay: 0.5,
-        ease: 'back.out(2)',
-        scrollTrigger: {
-          trigger: badgeRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      });
+      if (badgeRef.current) {
+        const avatars = badgeRef.current.querySelectorAll('img');
+        if (avatars.length > 0) {
+          gsap.from(Array.from(avatars), {
+            scale: 0,
+            rotation: 180,
+            stagger: 0.1,
+            duration: 0.5,
+            delay: 0.5,
+            ease: 'back.out(2)',
+            scrollTrigger: {
+              trigger: badgeRef.current,
+              start: 'top 80%',
+              toggleActions: 'play none none none',
+            },
+          });
+        }
+      }
 
       // Testimonial cards - horizontal slide with stagger
-      const cards = gridRef.current?.children || [];
-      gsap.from(cards, {
-        autoAlpha: 0,
-        x: (index) => (index % 2 === 0 ? -80 : 80),
-        y: 40,
-        stagger: 0.2,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: gridRef.current,
-          start: 'top 75%',
-          toggleActions: 'play none none none',
-        },
-      });
-
-      // Stars animation per card
-      cards.forEach((card) => {
-        const stars = card.querySelectorAll('[data-star]');
-        gsap.from(stars, {
-          scale: 0,
-          rotation: -180,
-          stagger: 0.08,
-          duration: 0.4,
-          delay: 0.6,
-          ease: 'back.out(2)',
+      if (gridRef.current) {
+        const cards = Array.from(gridRef.current.children);
+        gsap.from(cards, {
+          autoAlpha: 0,
+          x: (index) => (index % 2 === 0 ? -80 : 80),
+          y: 40,
+          stagger: 0.2,
+          duration: 0.9,
+          ease: 'power3.out',
           scrollTrigger: {
-            trigger: card,
-            start: 'top 80%',
+            trigger: gridRef.current,
+            start: 'top 75%',
             toggleActions: 'play none none none',
           },
         });
-      });
+
+        // Stars animation per card
+        cards.forEach((card) => {
+          const stars = card.querySelectorAll('[data-star]');
+          if (stars.length > 0) {
+            gsap.from(Array.from(stars), {
+              scale: 0,
+              rotation: -180,
+              stagger: 0.08,
+              duration: 0.4,
+              delay: 0.6,
+              ease: 'back.out(2)',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 80%',
+                toggleActions: 'play none none none',
+              },
+            });
+          }
+        });
+      }
 
     }, sectionRef);
 

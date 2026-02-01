@@ -31,7 +31,7 @@ export const Navbar: React.FC = () => {
 
       // Menu items stagger
       if (menuItemsRef.current) {
-        gsap.from(menuItemsRef.current.children, {
+        gsap.from(Array.from(menuItemsRef.current.children), {
           autoAlpha: 0,
           y: -20,
           stagger: 0.1,

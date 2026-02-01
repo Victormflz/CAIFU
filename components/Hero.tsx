@@ -36,7 +36,7 @@ export const Hero: React.FC = () => {
         const titleWords = titleRef.current.innerText.split(' ');
         titleRef.current.innerHTML = titleWords.map(word => `<span class="inline-block">${word}</span>`).join(' ');
         
-        tl.from(titleRef.current.children, {
+        tl.from(Array.from(titleRef.current.children), {
           autoAlpha: 0,
           y: 60,
           rotationX: -90,
@@ -61,14 +61,16 @@ export const Hero: React.FC = () => {
       }, '-=0.5');
 
       // Botones - con bounce effect
-      tl.from(buttonsRef.current?.children || [], {
-        autoAlpha: 0,
-        scale: 0,
-        y: 30,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: 'back.out(1.7)',
-      }, '-=0.4');
+      if (buttonsRef.current) {
+        tl.from(Array.from(buttonsRef.current.children), {
+          autoAlpha: 0,
+          scale: 0,
+          y: 30,
+          stagger: 0.15,
+          duration: 0.8,
+          ease: 'back.out(1.7)',
+        }, '-=0.4');
+      }
 
       // Trust indicator
       tl.from(trustRef.current, {
