@@ -25,7 +25,7 @@ export const ValueProposition: React.FC = () => {
         if (heading) {
           gsap.from(heading, {
             opacity: 0,
-            x: -60,
+            x: -30,
             duration: 1,
             ease: 'power3.out',
             clearProps: 'transform,opacity',
@@ -80,7 +80,7 @@ export const ValueProposition: React.FC = () => {
         if (quoteText) {
           gsap.from(quoteText, {
             opacity: 0,
-            x: 30,
+            x: 20,
             duration: 0.8,
             delay: 0.8,
             ease: 'power3.out',
@@ -97,7 +97,7 @@ export const ValueProposition: React.FC = () => {
       // Image animation - slide from right with scale
       gsap.from(imageRef.current, {
         opacity: 0,
-        x: 80,
+        x: 40,
         scale: 0.9,
         duration: 1.2,
         ease: 'power3.out',

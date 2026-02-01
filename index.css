@@ -24,6 +24,8 @@
     /* Better font rendering */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Prevent horizontal scroll from animations */
+    overflow-x: hidden;
   }
 
   /* Fix for fixed elements causing horizontal scroll */
@@ -46,6 +48,11 @@
 }
 
 @layer components {
+  /* Prevent horizontal scroll in sections with animations */
+  section {
+    overflow-x: hidden;
+  }
+
   /* Skip link for accessibility */
   .skip-link {
     position: absolute;

@@ -42,7 +42,7 @@ export const Testimonials: React.FC = () => {
       if (headerRef.current) {
         gsap.from(Array.from(headerRef.current.children), {
           opacity: 0,
-          x: -30,
+          x: -20,
           stagger: 0.15,
           duration: 0.7,
           ease: 'power2.out',
@@ -59,7 +59,7 @@ export const Testimonials: React.FC = () => {
       gsap.from(badgeRef.current, {
         opacity: 0,
         scale: 0.9,
-        x: 30,
+        x: 20,
         duration: 0.7,
         ease: 'power2.out',
         clearProps: 'transform,opacity',
