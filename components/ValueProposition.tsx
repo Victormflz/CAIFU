@@ -1,11 +1,109 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useInView } from 'react-intersection-observer';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const ValueProposition: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const quoteRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
   });
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Heading animation
+      gsap.from(contentRef.current?.querySelector('h2'), {
+        autoAlpha: 0,
+        x: -60,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+      });
+
+      // Paragraph animation
+      gsap.from(contentRef.current?.querySelector('p'), {
+        autoAlpha: 0,
+        y: 30,
+        duration: 0.8,
+        delay: 0.3,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+      });
+
+      // Quote line draw animation
+      if (lineRef.current) {
+        gsap.from(lineRef.current, {
+          scaleY: 0,
+          transformOrigin: 'top',
+          duration: 0.8,
+          delay: 0.5,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: quoteRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        });
+      }
+
+      // Quote content reveal
+      gsap.from(quoteRef.current?.querySelector('p'), {
+        autoAlpha: 0,
+        x: 30,
+        duration: 0.8,
+        delay: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: quoteRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+      });
+
+      // Image animation - slide from right with scale
+      gsap.from(imageRef.current, {
+        autoAlpha: 0,
+        x: 80,
+        scale: 0.9,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+      });
+
+      // Glow effect pulsing
+      gsap.to(imageRef.current?.querySelector('.absolute'), {
+        scale: 1.1,
+        opacity: 0.15,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      });
+
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   useEffect(() => {
     if (inView) {
@@ -28,13 +126,13 @@ export const ValueProposition: React.FC = () => {
   };
 
   return (
-    <section ref={ref} id="propuesta" className="py-16 sm:py-20 md:py-24 bg-brand-900 relative">
-      <div className="container mx-auto px-4 sm:px-6">
+    <section ref={sectionRef} id="propuesta" className="py-16 sm:py-20 md:py-24 bg-brand-900 relative">
+      <div ref={ref} className="container mx-auto px-4 sm:px-6">
         {/* Mobile-first: Content first, image second */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* Content - Priority on mobile */}
-          <div className="order-1">
+          <div ref={contentRef} className="order-1">
             <h2 className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
               Tu éxito comercial es{' '}
               <span className="text-brand-500 block sm:inline">nuestra única métrica.</span>
@@ -48,7 +146,8 @@ export const ValueProposition: React.FC = () => {
             </p>
             
             {/* Quote - Visual hierarchy */}
-            <div className="border-l-4 border-brand-accent pl-4 sm:pl-6 py-2 bg-brand-800/30 rounded-r-lg">
+            <div ref={quoteRef} className="relative border-l-4 border-brand-accent pl-4 sm:pl-6 py-2 bg-brand-800/30 rounded-r-lg">
+              <div ref={lineRef} className="absolute left-0 top-0 bottom-0 w-1 bg-brand-accent"></div>
               <p className="text-lg sm:text-xl font-semibold text-white italic leading-relaxed">
                 "No solo vendemos productos, vendemos la oportunidad de que tu negocio escale al siguiente nivel."
               </p>
@@ -56,7 +155,7 @@ export const ValueProposition: React.FC = () => {
           </div>
 
           {/* Image - Secondary on mobile */}
-          <div className="order-2">
+          <div ref={imageRef} className="order-2">
             <div className="relative">
               {/* Glow effect */}
               <div className="absolute -inset-4 bg-brand-500/10 blur-3xl rounded-full" aria-hidden="true"></div>

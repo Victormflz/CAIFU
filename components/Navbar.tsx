@@ -1,9 +1,65 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, ShoppingBag, Package } from 'lucide-react';
+import gsap from 'gsap';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLAnchorElement>(null);
+  const menuItemsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Initial entrance animation
+    const ctx = gsap.context(() => {
+      gsap.from(navRef.current, {
+        y: -100,
+        autoAlpha: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+        delay: 0.2,
+      });
+
+      // Logo animation
+      gsap.from(logoRef.current, {
+        scale: 0,
+        rotation: -180,
+        duration: 0.8,
+        ease: 'back.out(1.7)',
+        delay: 0.5,
+      });
+
+      // Menu items stagger
+      if (menuItemsRef.current) {
+        gsap.from(menuItemsRef.current.children, {
+          autoAlpha: 0,
+          y: -20,
+          stagger: 0.1,
+          duration: 0.6,
+          ease: 'power2.out',
+          delay: 0.8,
+        });
+      }
+    }, navRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Logo hover animation
+  useEffect(() => {
+    if (logoRef.current) {
+      const logo = logoRef.current;
+      const svg = logo.querySelector('svg');
+
+      logo.addEventListener('mouseenter', () => {
+        gsap.to(svg, {
+          rotation: 360,
+          duration: 0.6,
+          ease: 'back.out(1.5)',
+        });
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,6 +94,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav 
+      ref={navRef}
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled ? 'bg-brand-900/95 backdrop-blur-md shadow-lg py-3' : 'bg-brand-900/80 backdrop-blur-sm py-4'
       }`}
@@ -48,6 +105,7 @@ export const Navbar: React.FC = () => {
         <div className="flex justify-between items-center">
           {/* Logo - Optimized for touch */}
           <a 
+            ref={logoRef}
             href="#" 
             className="flex items-center gap-2 cursor-pointer min-h-touch tap-spacing -ml-3"
             aria-label="CAIFU - Ir al inicio"
@@ -78,7 +136,7 @@ export const Navbar: React.FC = () => {
           </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8">
+          <div ref={menuItemsRef} className="hidden md:flex items-center gap-6 lg:gap-8">
             <a 
               href="#propuesta" 
               className="text-sm font-medium text-gray-300 hover:text-white transition-colors py-2"

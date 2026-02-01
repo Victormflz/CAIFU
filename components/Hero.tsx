@@ -1,11 +1,120 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ArrowRight, ChevronDown, MessageCircle } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const Hero: React.FC = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const badgeRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLHeadingElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+  const trustRef = useRef<HTMLParagraphElement>(null);
+  const scrollIndicatorRef = useRef<HTMLAnchorElement>(null);
+  const bgImageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Timeline para secuencia de entrada
+      const tl = gsap.timeline({
+        defaults: { ease: 'power3.out' }
+      });
+
+      // Badge - aparece primero
+      tl.from(badgeRef.current, {
+        autoAlpha: 0,
+        y: -30,
+        scale: 0.8,
+        duration: 0.6,
+      });
+
+      // Título - split words con stagger
+      if (titleRef.current) {
+        const titleWords = titleRef.current.innerText.split(' ');
+        titleRef.current.innerHTML = titleWords.map(word => `<span class="inline-block">${word}</span>`).join(' ');
+        
+        tl.from(titleRef.current.children, {
+          autoAlpha: 0,
+          y: 60,
+          rotationX: -90,
+          transformOrigin: 'top center',
+          stagger: 0.1,
+          duration: 0.8,
+        }, '-=0.3');
+      }
+
+      // Subtítulo
+      tl.from(subtitleRef.current, {
+        autoAlpha: 0,
+        y: 40,
+        duration: 0.8,
+      }, '-=0.4');
+
+      // Descripción
+      tl.from(descriptionRef.current, {
+        autoAlpha: 0,
+        y: 30,
+        duration: 0.7,
+      }, '-=0.5');
+
+      // Botones - con bounce effect
+      tl.from(buttonsRef.current?.children || [], {
+        autoAlpha: 0,
+        scale: 0,
+        y: 30,
+        stagger: 0.15,
+        duration: 0.8,
+        ease: 'back.out(1.7)',
+      }, '-=0.4');
+
+      // Trust indicator
+      tl.from(trustRef.current, {
+        autoAlpha: 0,
+        y: 20,
+        duration: 0.6,
+      }, '-=0.3');
+
+      // Scroll indicator - fade in loop
+      tl.from(scrollIndicatorRef.current, {
+        autoAlpha: 0,
+        duration: 0.8,
+      }, '-=0.2');
+
+      // Parallax en background image
+      if (bgImageRef.current) {
+        gsap.to(bgImageRef.current, {
+          yPercent: 30,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1,
+          },
+        });
+      }
+
+      // Scroll indicator continuous animation
+      gsap.to(scrollIndicatorRef.current, {
+        y: 10,
+        duration: 1.5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
+      });
+
+    }, heroRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <header className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <header ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
+      <div ref={bgImageRef} className="absolute inset-0 z-0 will-change-transform">
         <img 
           src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
           alt="" 
@@ -19,31 +128,31 @@ export const Hero: React.FC = () => {
       {/* Content - Mobile-first Typography */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center pt-20 pb-16">
         {/* Badge */}
-        <div className="inline-block px-4 py-2 mb-6 rounded-full border border-brand-500/30 bg-brand-500/10 backdrop-blur-sm animate-fade-in">
+        <div ref={badgeRef} className="inline-block px-4 py-2 mb-6 rounded-full border border-brand-500/30 bg-brand-500/10 backdrop-blur-sm">
           <span className="text-brand-500 text-xs sm:text-sm font-bold tracking-wider uppercase">
             Venta Mayorista Exclusiva
           </span>
         </div>
         
         {/* Main Heading - Mobile-first sizes */}
-        <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight leading-[1.1] px-2 animate-slide-up">
+        <h1 ref={titleRef} className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight leading-[1.1] px-2">
           Importadora Caifu
         </h1>
         
         {/* Subheading - Optimized for readability */}
-        <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-200 mb-6 leading-tight px-2">
+        <h2 ref={subtitleRef} className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-200 mb-6 leading-tight px-2">
           Tu Socio Mayorista en Protección iPhone
         </h2>
         
         {/* Description - Mobile-optimized line length */}
-        <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-4">
+        <p ref={descriptionRef} className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-4">
           En Importadora Caifu eliminamos intermediarios para ofrecerte productos al mejor precio. 
           Conectamos directamente con la fuente para asegurarnos de que cada inversión potencie 
           la rentabilidad de tu negocio.
         </p>
 
         {/* CTA Buttons - Large touch targets */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
+        <div ref={buttonsRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
           <button 
             type="button"
             className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-brand-900 font-bold text-base sm:text-lg rounded-full overflow-hidden shadow-2xl shadow-yellow-500/50 hover:shadow-yellow-300/90 hover:scale-105 active:scale-95 transition-all duration-500 min-h-touch border-2 border-yellow-300 hover:border-yellow-200"
@@ -69,15 +178,16 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Trust indicator - Mobile-friendly */}
-        <p className="mt-8 text-xs sm:text-sm text-gray-500 font-medium px-4">
+        <p ref={trustRef} className="mt-8 text-xs sm:text-sm text-gray-500 font-medium px-4">
           Más de 500+ comercios confían en nosotros
         </p>
       </div>
 
       {/* Scroll Indicator - Only visible on taller screens */}
       <a 
+        ref={scrollIndicatorRef}
         href="#propuesta" 
-        className="hidden sm:block absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-gray-500 hover:text-white transition-colors p-2"
+        className="hidden sm:block absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 hover:text-white transition-colors p-2"
         aria-label="Desplazarse hacia abajo"
       >
         <ChevronDown className="w-8 h-8" aria-hidden="true" />
