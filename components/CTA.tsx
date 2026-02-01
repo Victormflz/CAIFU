@@ -1,34 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Download, MessageCircle } from 'lucide-react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export const CTA: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(contentRef.current?.children || [], {
-        opacity: 0,
-        y: 40,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: 'top 80%',
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={sectionRef} id="contacto" className="py-16 sm:py-20 md:py-24 relative overflow-hidden">
+    <section id="contacto" className="py-16 sm:py-20 md:py-24 relative overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-brand-500 to-blue-600" aria-hidden="true"></div>
       
@@ -42,7 +17,7 @@ export const CTA: React.FC = () => {
         aria-hidden="true"
       ></div>
 
-      <div ref={contentRef} className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
         {/* Heading - Mobile-first sizes */}
         <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 sm:mb-8 tracking-tight leading-tight px-2">
           ¿Listo para Impulsar tus Ventas?

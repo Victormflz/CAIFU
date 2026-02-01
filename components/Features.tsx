@@ -1,45 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { TrendingUp, ShieldCheck, Truck, Box } from 'lucide-react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export const Features: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(titleRef.current, {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      });
-
-      gsap.from(cardsRef.current?.children || [], {
-        opacity: 0,
-        y: 80,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: cardsRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const features = [
     {
       icon: <TrendingUp className="w-7 h-7 sm:w-8 sm:h-8" />,
@@ -64,11 +26,11 @@ export const Features: React.FC = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="servicios" className="py-16 sm:py-20 md:py-24 bg-brand-800">
+    <section id="servicios" className="py-16 sm:py-20 md:py-24 bg-brand-800">
       <div className="container mx-auto px-4 sm:px-6">
         
         {/* Section Header - Mobile optimized */}
-        <div ref={titleRef} className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-12 sm:mb-16 max-w-3xl mx-auto">
           <h3 className="text-sm sm:text-base font-bold text-brand-500 uppercase tracking-wider mb-3">
             ¿Por qué elegirnos?
           </h3>
@@ -78,7 +40,7 @@ export const Features: React.FC = () => {
         </div>
 
         {/* Features Grid - Mobile-first: 1 column → 2 columns → 4 columns */}
-        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 md:gap-8">
           {features.map((feature, idx) => (
             <article 
               key={idx} 

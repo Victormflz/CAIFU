@@ -1,46 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export const ValueProposition: React.FC = () => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
   });
-
-  const sectionRef = useRef<HTMLElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(contentRef.current, {
-        opacity: 0,
-        x: -80,
-        duration: 1,
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: 'top 80%',
-        },
-      });
-
-      gsap.from(imageRef.current, {
-        opacity: 0,
-        x: 80,
-        scale: 0.8,
-        duration: 1,
-        scrollTrigger: {
-          trigger: imageRef.current,
-          start: 'top 80%',
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   useEffect(() => {
     if (inView) {
@@ -63,13 +28,13 @@ export const ValueProposition: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} id="propuesta" className="py-16 sm:py-20 md:py-24 bg-brand-900 relative">
-      <div ref={ref} className="container mx-auto px-4 sm:px-6">
+    <section ref={ref} id="propuesta" className="py-16 sm:py-20 md:py-24 bg-brand-900 relative">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Mobile-first: Content first, image second */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* Content - Priority on mobile */}
-          <div ref={contentRef} className="order-1">
+          <div className="order-1">
             <h2 className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
               Tu éxito comercial es{' '}
               <span className="text-brand-500 block sm:inline">nuestra única métrica.</span>
@@ -91,7 +56,7 @@ export const ValueProposition: React.FC = () => {
           </div>
 
           {/* Image - Secondary on mobile */}
-          <div ref={imageRef} className="order-2">
+          <div className="order-2">
             <div className="relative">
               {/* Glow effect */}
               <div className="absolute -inset-4 bg-brand-500/10 blur-3xl rounded-full" aria-hidden="true"></div>
