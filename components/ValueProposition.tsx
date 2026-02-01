@@ -130,24 +130,42 @@ export const ValueProposition: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (inView) {
-      const numbers = document.querySelectorAll('.animate-number');
-      numbers.forEach((num) => animateValue(num, 0, parseInt(num.innerHTML), 2000));
-    }
-  }, [inView]);
+    if (!inView) return;
 
-  const animateValue = (obj, start, end, duration) => {
-    let startTimestamp = null;
-    const step = (timestamp) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      obj.innerHTML = Math.floor(progress * (end - start) + start);
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
+    const numbers = document.querySelectorAll('.animate-number');
+    const animationIds: number[] = [];
+
+    const animateValue = (obj: Element, start: number, end: number, duration: number) => {
+      let startTimestamp: number | null = null;
+      let animationId: number;
+      
+      const step = (timestamp: number) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start).toString();
+        
+        if (progress < 1) {
+          animationId = window.requestAnimationFrame(step);
+          animationIds.push(animationId);
+        }
+      };
+      
+      animationId = window.requestAnimationFrame(step);
+      animationIds.push(animationId);
     };
-    window.requestAnimationFrame(step);
-  };
+
+    numbers.forEach((num) => {
+      const targetValue = parseInt(num.innerHTML);
+      if (!isNaN(targetValue)) {
+        animateValue(num, 0, targetValue, 2000);
+      }
+    });
+
+    // Cleanup: cancelar todas las animaciones pendientes
+    return () => {
+      animationIds.forEach(id => window.cancelAnimationFrame(id));
+    };
+  }, [inView]);
 
   return (
     <section ref={sectionRef} id="propuesta" className="py-16 sm:py-20 md:py-24 bg-brand-900 relative">

@@ -28,6 +28,7 @@ export const Navbar: React.FC = () => {
         duration: 0.8,
         ease: 'back.out(1.7)',
         delay: 0.5,
+        clearProps: 'transform'
       });
 
       // Menu items stagger
@@ -49,18 +50,26 @@ export const Navbar: React.FC = () => {
 
   // Logo hover animation
   useEffect(() => {
-    if (logoRef.current) {
-      const logo = logoRef.current;
-      const svg = logo.querySelector('svg');
+    const logo = logoRef.current;
+    if (!logo) return;
+    
+    const svg = logo.querySelector('svg');
+    if (!svg) return;
 
-      logo.addEventListener('mouseenter', () => {
-        gsap.to(svg, {
-          rotation: 360,
-          duration: 0.6,
-          ease: 'back.out(1.5)',
-        });
+    const handleMouseEnter = () => {
+      gsap.to(svg, {
+        rotation: 360,
+        duration: 0.6,
+        ease: 'back.out(1.5)',
+        clearProps: 'rotation'
       });
-    }
+    };
+
+    logo.addEventListener('mouseenter', handleMouseEnter);
+    
+    return () => {
+      logo.removeEventListener('mouseenter', handleMouseEnter);
+    };
   }, []);
 
   useEffect(() => {

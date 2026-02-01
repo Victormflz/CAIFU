@@ -31,7 +31,7 @@ export const Features: React.FC = () => {
 
       // Feature cards - stagger grid with rotate effect
       if (gridRef.current) {
-        const cards = Array.from(gridRef.current.children);
+        const cards = Array.from(gridRef.current.children) as Element[];
         gsap.from(cards, {
           opacity: 0,
           y: 40,
@@ -52,7 +52,7 @@ export const Features: React.FC = () => {
           const iconElement = card.querySelector('.icon-element');
           
           if (iconElement) {
-            card.addEventListener('mouseenter', () => {
+            const handleMouseEnter = () => {
               gsap.to(iconElement, {
                 rotation: 360,
                 scale: 1.1,
@@ -60,16 +60,19 @@ export const Features: React.FC = () => {
                 ease: 'back.out(1.7)',
                 clearProps: 'rotation'
               });
-            });
+            };
 
-            card.addEventListener('mouseleave', () => {
+            const handleMouseLeave = () => {
               gsap.to(iconElement, {
                 rotation: 0,
                 scale: 1,
                 duration: 0.4,
                 ease: 'power2.out',
               });
-            });
+            };
+
+            card.addEventListener('mouseenter', handleMouseEnter);
+            card.addEventListener('mouseleave', handleMouseLeave);
           }
         });
       }

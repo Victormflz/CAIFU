@@ -83,7 +83,7 @@ export const Products: React.FC = () => {
 
       // Product cards - flip and fade stagger
       if (gridRef.current) {
-        const cards = Array.from(gridRef.current.children);
+        const cards = Array.from(gridRef.current.children) as Element[];
         gsap.from(cards, {
           opacity: 0,
           y: 40,
@@ -105,7 +105,7 @@ export const Products: React.FC = () => {
           const button = card.querySelector('button');
           
           if (img) {
-            card.addEventListener('mouseenter', () => {
+            const handleMouseEnter = () => {
               gsap.to(img, {
                 scale: 1.15,
                 rotation: 3,
@@ -119,9 +119,9 @@ export const Products: React.FC = () => {
                   ease: 'power2.out',
                 });
               }
-            });
+            };
 
-            card.addEventListener('mouseleave', () => {
+            const handleMouseLeave = () => {
               gsap.to(img, {
                 scale: 1,
                 rotation: 0,
@@ -135,7 +135,10 @@ export const Products: React.FC = () => {
                   ease: 'power2.out',
                 });
               }
-            });
+            };
+
+            card.addEventListener('mouseenter', handleMouseEnter);
+            card.addEventListener('mouseleave', handleMouseLeave);
           }
         });
       }

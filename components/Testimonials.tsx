@@ -93,7 +93,7 @@ export const Testimonials: React.FC = () => {
 
       // Testimonial cards - horizontal slide with stagger
       if (gridRef.current) {
-        const cards = Array.from(gridRef.current.children);
+        const cards = Array.from(gridRef.current.children) as Element[];
         gsap.from(cards, {
           opacity: 0,
           y: 40,
