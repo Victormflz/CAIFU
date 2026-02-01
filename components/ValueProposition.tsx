@@ -134,22 +134,19 @@ export const ValueProposition: React.FC = () => {
           {/* Content - Priority on mobile */}
           <div ref={contentRef} className="order-1">
             <h2 className="text-3xl xs:text-4xl sm:text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
-              Tu éxito comercial es{' '}
-              <span className="text-brand-500 block sm:inline">nuestra única métrica.</span>
+              Precios de fábrica.{' '}
+              <span className="text-brand-500 block sm:inline">Márgenes reales.</span>
             </h2>
             
             <p className="text-gray-300 text-base sm:text-lg mb-6 leading-relaxed">
-              Sabemos que el margen lo es todo. Por eso, en Importadora Caifu eliminamos 
-              la cadena de intermediarios innecesarios. Te conectamos con la fuente, 
-              asegurando que cada peso que inviertas se traduzca en mayor rentabilidad 
-              para tu comercio.
+              Conectamos tu negocio directamente con la fuente. Elimina intermediarios y multiplica tu rentabilidad.
             </p>
             
             {/* Quote - Visual hierarchy */}
             <div ref={quoteRef} className="relative border-l-4 border-brand-accent pl-4 sm:pl-6 py-2 bg-brand-800/30 rounded-r-lg">
               <div ref={lineRef} className="absolute left-0 top-0 bottom-0 w-1 bg-brand-accent"></div>
               <p className="text-lg sm:text-xl font-semibold text-white italic leading-relaxed">
-                "No solo vendemos productos, vendemos la oportunidad de que tu negocio escale al siguiente nivel."
+                "Más margen, más crecimiento."
               </p>
             </div>
           </div>

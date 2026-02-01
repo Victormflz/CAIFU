@@ -141,14 +141,12 @@ export const Hero: React.FC = () => {
         
         {/* Subheading - Optimized for readability */}
         <h2 ref={subtitleRef} className="text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-200 mb-6 leading-tight px-2">
-          Tu Socio Mayorista en Protección iPhone
+          Accesorios iPhone al por Mayor
         </h2>
         
         {/* Description - Mobile-optimized line length */}
         <p ref={descriptionRef} className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-4">
-          En Importadora Caifu eliminamos intermediarios para ofrecerte productos al mejor precio. 
-          Conectamos directamente con la fuente para asegurarnos de que cada inversión potencie 
-          la rentabilidad de tu negocio.
+          Importación directa. Precios de fábrica. Sin intermediarios.
         </p>
 
         {/* CTA Buttons - Large touch targets */}

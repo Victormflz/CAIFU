@@ -124,12 +124,12 @@ export const CTA: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
         {/* Heading - Mobile-first sizes */}
         <h2 ref={titleRef} className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-black text-white mb-6 sm:mb-8 tracking-tight leading-tight px-2">
-          ¿Listo para Impulsar tus Ventas?
+          Comienza Ahora
         </h2>
         
         {/* Subheading */}
         <p ref={subtitleRef} className="text-base sm:text-lg md:text-xl text-blue-50 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-4">
-          Conéctate con nosotros por WhatsApp para obtener más información sobre nuestros productos al por mayor.
+          Contacta por WhatsApp y recibe tu cotización al instante.
         </p>
         
         {/* CTA Button - Large and touch-friendly */}

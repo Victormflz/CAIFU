@@ -129,10 +129,10 @@ export const Testimonials: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 gap-6">
           <div ref={headerRef} className="max-w-xl">
             <h2 className="text-3xl xs:text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
-              Socios, no solo clientes.
+              Clientes satisfechos
             </h2>
             <p className="text-gray-300 text-base sm:text-lg">
-              Más de 500 comercios a lo largo del país confían su abastecimiento en nosotros.
+              +500 comercios confían en nosotros
             </p>
           </div>
           
