@@ -41,30 +41,30 @@ export const Testimonials: React.FC = () => {
       // Header content animation
       if (headerRef.current) {
         gsap.from(Array.from(headerRef.current.children), {
-          autoAlpha: 0,
-          x: -50,
-          stagger: 0.2,
-          duration: 0.8,
-          ease: 'power3.out',
+          opacity: 0,
+          x: -30,
+          stagger: 0.15,
+          duration: 0.7,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: headerRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
+            start: 'top 85%',
+            end: 'bottom 20%',
           },
         });
       }
 
       // Badge animation with avatars
       gsap.from(badgeRef.current, {
-        autoAlpha: 0,
-        scale: 0.8,
-        x: 50,
-        duration: 0.8,
-        ease: 'back.out(1.5)',
+        opacity: 0,
+        scale: 0.9,
+        x: 30,
+        duration: 0.7,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: badgeRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
+          start: 'top 85%',
+          end: 'bottom 20%',
         },
       });
 
@@ -74,15 +74,14 @@ export const Testimonials: React.FC = () => {
         if (avatars.length > 0) {
           gsap.from(Array.from(avatars), {
             scale: 0,
-            rotation: 180,
             stagger: 0.1,
             duration: 0.5,
-            delay: 0.5,
-            ease: 'back.out(2)',
+            delay: 0.3,
+            ease: 'back.out(1.7)',
             scrollTrigger: {
               trigger: badgeRef.current,
-              start: 'top 80%',
-              toggleActions: 'play none none none',
+              start: 'top 85%',
+              end: 'bottom 20%',
             },
           });
         }
@@ -92,35 +91,28 @@ export const Testimonials: React.FC = () => {
       if (gridRef.current) {
         const cards = Array.from(gridRef.current.children);
         gsap.from(cards, {
-          autoAlpha: 0,
-          x: (index) => (index % 2 === 0 ? -80 : 80),
+          opacity: 0,
           y: 40,
-          stagger: 0.2,
-          duration: 0.9,
-          ease: 'power3.out',
+          stagger: 0.15,
+          duration: 0.7,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: gridRef.current,
-            start: 'top 75%',
-            toggleActions: 'play none none none',
+            start: 'top 85%',
+            end: 'bottom 20%',
           },
         });
 
-        // Stars animation per card
+        // Stars animation per card - simplified
         cards.forEach((card) => {
           const stars = card.querySelectorAll('[data-star]');
           if (stars.length > 0) {
             gsap.from(Array.from(stars), {
               scale: 0,
-              rotation: -180,
-              stagger: 0.08,
-              duration: 0.4,
-              delay: 0.6,
-              ease: 'back.out(2)',
-              scrollTrigger: {
-                trigger: card,
-                start: 'top 80%',
-                toggleActions: 'play none none none',
-              },
+              stagger: 0.05,
+              duration: 0.3,
+              delay: 0.4,
+              ease: 'back.out(1.5)',
             });
           }
         });

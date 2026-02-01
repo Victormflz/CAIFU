@@ -67,15 +67,15 @@ export const Products: React.FC = () => {
       // Header animation
       if (headerRef.current) {
         gsap.from(Array.from(headerRef.current.children), {
-          autoAlpha: 0,
+          opacity: 0,
           y: 30,
           stagger: 0.15,
           duration: 0.7,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: headerRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
+            start: 'top 85%',
+            end: 'bottom 20%',
           },
         });
       }
@@ -84,21 +84,16 @@ export const Products: React.FC = () => {
       if (gridRef.current) {
         const cards = Array.from(gridRef.current.children);
         gsap.from(cards, {
-          autoAlpha: 0,
-          rotationY: -90,
-          y: 50,
-          scale: 0.8,
-          stagger: {
-            amount: 0.8,
-            from: 'start',
-            grid: 'auto',
-          },
-          duration: 0.8,
-          ease: 'back.out(1.3)',
+          opacity: 0,
+          y: 40,
+          scale: 0.9,
+          stagger: 0.1,
+          duration: 0.7,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: gridRef.current,
-            start: 'top 75%',
-            toggleActions: 'play none none none',
+            start: 'top 85%',
+            end: 'bottom 20%',
           },
         });
 
