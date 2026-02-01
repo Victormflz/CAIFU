@@ -7,43 +7,16 @@ export const Footer: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6">
         
         {/* Footer Content Grid - Mobile-first */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-10 sm:mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-12 mb-10 sm:mb-12">
           
           {/* Brand Column - Full width on mobile */}
-          <div className="sm:col-span-2">
+          <div>
             <div className="mb-4">
               <span className="text-xl font-black text-white">CAIFU.</span>
             </div>
             <p className="text-gray-400 text-sm sm:text-base max-w-xs leading-relaxed">
               Importadora líder en venta mayorista. Conectamos tu negocio con las mejores oportunidades del mercado asiático.
             </p>
-          </div>
-          
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-white font-bold mb-4 text-base sm:text-lg">Enlaces Rápidos</h4>
-            <ul className="space-y-3 text-sm sm:text-base">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-brand-500 transition-colors inline-block py-1">
-                  Inicio
-                </a>
-              </li>
-              <li>
-                <a href="#catalogo" className="text-gray-400 hover:text-brand-500 transition-colors inline-block py-1">
-                  Catálogo
-                </a>
-              </li>
-              <li>
-                <a href="#servicios" className="text-gray-400 hover:text-brand-500 transition-colors inline-block py-1">
-                  Ofertas Semanales
-                </a>
-              </li>
-              <li>
-                <a href="#contacto" className="text-gray-400 hover:text-brand-500 transition-colors inline-block py-1">
-                  Contacto
-                </a>
-              </li>
-            </ul>
           </div>
 
           {/* Legal Links */}
