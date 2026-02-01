@@ -46,21 +46,23 @@ export const Hero: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
           <button 
             type="button"
-            className="btn-base bg-yellow-500 text-brand-900 hover:bg-yellow-400 hover:scale-105 active:scale-95 font-bold text-base sm:text-lg shadow-2xl shadow-yellow-500/50 hover:shadow-yellow-400/60 transition-all duration-200"
+            className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-brand-900 font-bold text-base sm:text-lg rounded-full overflow-hidden shadow-2xl shadow-yellow-500/40 hover:shadow-yellow-400/70 hover:from-yellow-300 hover:to-yellow-400 active:scale-95 transition-all duration-300 min-h-touch"
             onClick={() => {
               window.open('https://wa.me/573147244831?text=Hola!%20Quisiera%20saber%20más%20sobre%20sus%20productos.', '_blank');
             }}
             aria-label="Contactar por WhatsApp"
           >
-            <MessageCircle className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
-            <span>Contactar por WhatsApp</span>
+            <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+            <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 relative z-10" aria-hidden="true" />
+            <span className="relative z-10">Contactar por WhatsApp</span>
           </button>
           
           <a 
             href="#propuesta"
-            className="btn-base bg-white/10 backdrop-blur-md border-2 border-white/20 text-white hover:bg-white/20 hover:border-white/40 hover:scale-105 active:scale-95 transition-all duration-200 shadow-lg"
+            className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 backdrop-blur-xl border border-white/30 text-white font-semibold text-base rounded-full overflow-hidden hover:bg-white/10 hover:border-white/50 active:scale-95 transition-all duration-300 shadow-lg shadow-black/20 min-h-touch"
           >
-            Cómo funciona
+            <span className="absolute inset-0 bg-gradient-to-r from-brand-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <span className="relative z-10">Cómo funciona</span>
           </a>
         </div>
 
