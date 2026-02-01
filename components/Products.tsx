@@ -55,53 +55,62 @@ const products: Product[] = [
 
 export const Products: React.FC = () => {
   return (
-    <section id="catalogo" className="py-24 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+    <section id="catalogo" className="py-16 sm:py-20 md:py-24 bg-white">
+      <div className="container mx-auto px-4 sm:px-6">
+        
+        {/* Section Header */}
+        <div className="mb-10 sm:mb-12">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-900 mb-2 leading-tight">
             Productos más Vendidos
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-sm sm:text-base">
             Mostrando los {products.length} resultados
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Products Grid - Mobile-first: 1 column → 2 columns → 4 columns */}
+        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {products.map((product) => (
-            <div 
+            <article 
               key={product.id} 
-              className="bg-white border-2 border-blue-200 rounded-lg overflow-hidden hover:border-blue-400 transition-all hover:shadow-xl group"
+              className="bg-white border-2 border-blue-100 rounded-2xl overflow-hidden hover:border-blue-400 hover:shadow-xl transition-all group"
             >
-              <div className="relative bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 p-6 min-h-[200px] flex items-center justify-center">
+              {/* Product Image */}
+              <div className="relative bg-gradient-to-br from-blue-50 via-blue-100 to-blue-50 p-4 sm:p-6 min-h-[180px] sm:min-h-[200px] flex items-center justify-center overflow-hidden">
                 <img 
                   src={product.image} 
                   alt={product.title}
-                  className="h-auto w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="h-auto w-full max-w-[160px] sm:max-w-none object-contain group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
               </div>
               
-              <div className="p-5">
-                <h3 className="text-sm font-semibold text-gray-900 mb-3 line-clamp-2 min-h-[2.5rem] leading-tight">
+              {/* Product Info */}
+              <div className="p-4 sm:p-5">
+                {/* Title - Fixed height for consistent card sizes */}
+                <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-3 line-clamp-2 min-h-[2.5rem] sm:min-h-[3rem] leading-tight">
                   {product.title}
                 </h3>
                 
+                {/* Price */}
                 <div className="mb-4">
-                  <span className="text-2xl font-bold text-brand-500">
+                  <span className="text-xl sm:text-2xl font-bold text-brand-500">
                     {product.price}
                   </span>
                 </div>
                 
-<button 
-          className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-md hover:shadow-lg"
-          onClick={() => {
-            window.open('https://wa.me/573147244831?text=Hola!%20Estoy%20interesado%20en%20sus%20productos.', '_blank');
-          }}
-        >
-          Pagos a Contraentrega
-        </button>
+                {/* CTA Button - Touch-optimized */}
+                <button 
+                  className="w-full btn-base bg-blue-700 hover:bg-blue-800 active:bg-blue-900 text-white font-bold text-sm sm:text-base shadow-md hover:shadow-lg"
+                  onClick={() => {
+                    window.open('https://wa.me/573147244831?text=Hola!%20Estoy%20interesado%20en%20sus%20productos.', '_blank');
+                  }}
+                  aria-label={`Consultar precio de ${product.title}`}
+                >
+                  Pagos a Contraentrega
+                </button>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

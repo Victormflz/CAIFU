@@ -2,84 +2,154 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth scrolling for anchor links */
-html {
-  scroll-behavior: smooth;
+@layer base {
+  /* Mobile-first: Optimized smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Base typography - Mobile-first (16px minimum) */
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 1rem; /* 16px base */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Better focus styles for accessibility */
+  *:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Responsive images */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+@layer components {
+  /* Custom scrollbar - Subtle and mobile-friendly */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+  }
+
+  /* Skip link for accessibility */
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    z-index: 9999;
+    padding: 1rem 1.5rem;
+    background-color: #0f172a;
+    color: white;
+    text-decoration: none;
+    border: 2px solid #3b82f6;
+    border-radius: 4px;
+    font-weight: 600;
+    min-height: 44px;
+  }
+
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+  }
+
+  /* Screen reader only text */
+  .screen-reader-text {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    word-wrap: normal !important;
+    white-space: nowrap;
+  }
+
+  .screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    clip-path: none;
+    color: #21759b;
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    height: auto;
+    left: 1rem;
+    line-height: 1.5;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    top: 1rem;
+    width: auto;
+    z-index: 100000;
+  }
+
+  /* Mobile-optimized button base */
+  .btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+  }
+
+  .btn-base:active {
+    transform: scale(0.98);
+  }
 }
 
-::-webkit-scrollbar-track {
-  background: #1e293b;
-}
+@layer utilities {
+  /* Safe area insets for notched devices */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
 
-::-webkit-scrollbar-thumb {
-  background: #475569;
-  border-radius: 5px;
-}
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
-}
+  /* Touch-friendly spacing */
+  .tap-spacing {
+    padding: 0.75rem;
+  }
 
-/* Base styles */
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/* Skip link for accessibility */
-.skip-link {
-  position: absolute;
-  left: -9999px;
-  z-index: 999;
-  padding: 1em;
-  background-color: #0f172a;
-  color: white;
-  text-decoration: none;
-  border: 2px solid #3b82f6;
-}
-
-.skip-link:focus {
-  left: 6px;
-  top: 7px;
-}
-
-/* Screen reader only text */
-.screen-reader-text {
-  clip: rect(1px, 1px, 1px, 1px);
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  word-wrap: normal !important;
-}
-
-.screen-reader-text:focus {
-  background-color: #f1f1f1;
-  border-radius: 3px;
-  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
-  clip: auto !important;
-  color: #21759b;
-  display: block;
-  font-size: 14px;
-  font-weight: bold;
-  height: auto;
-  left: 5px;
-  line-height: normal;
-  padding: 15px 23px 14px;
-  text-decoration: none;
-  top: 5px;
-  width: auto;
-  z-index: 100000;
+  /* Prevent text from breaking layout */
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 
