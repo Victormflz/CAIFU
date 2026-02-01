@@ -99,7 +99,7 @@ export const Navbar: React.FC = () => {
             </a>
             <a 
               href="#catalogo" 
-              className="btn-base bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 shadow-lg shadow-yellow-500/20 inline-flex items-center gap-2"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 font-bold text-sm rounded-full shadow-lg shadow-yellow-500/20 transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <Package className="w-4 h-4" aria-hidden="true" />
               Ver Catálogo
@@ -156,7 +156,7 @@ export const Navbar: React.FC = () => {
             <a 
               href="#catalogo" 
               onClick={() => setIsMobileMenuOpen(false)} 
-              className="mt-4 btn-base bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 font-bold text-lg shadow-lg shadow-yellow-500/30 inline-flex items-center gap-2"
+              className="mt-4 inline-flex items-center justify-center gap-2 px-8 py-4 bg-yellow-500 text-brand-900 hover:bg-yellow-400 active:bg-yellow-600 font-bold text-lg rounded-full shadow-lg shadow-yellow-500/30 transition-all duration-300 min-h-touch"
             >
               <Package className="w-5 h-5" aria-hidden="true" />
               Ver Catálogo
